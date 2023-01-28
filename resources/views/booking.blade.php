@@ -325,7 +325,7 @@
                     @csrf
                     <div class="mb-3 ">
                         <label class="form-label">Receipt</label>
-                        <input type="file" class="form-control" name="receipt">
+                        <input type="file" class="form-control" name="receipt" required>
                         <input type="hidden" name="payment_type" value="qr">
                         <input type="hidden" name="status" value="confirmed">
                         <input type="hidden" name="itemUserID">
