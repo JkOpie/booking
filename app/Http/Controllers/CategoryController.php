@@ -48,7 +48,7 @@ class CategoryController extends Controller
             'filename' => $fileName,
         ]);
 
-        return redirect()->route('categories.index')->with('success', $request->name.' '.'created successfully');
+        return redirect()->route('category.index')->with('success', $request->name.' '.'created successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class CategoryController extends Controller
             'filename' =>  $fileName,
         ]);
 
-        return redirect()->route('categories.index')->with('success', $category->name.' updated successfully');
+        return redirect()->route('category.index')->with('success', $category->name.' updated successfully');
     }
 
     /**
@@ -120,6 +120,6 @@ class CategoryController extends Controller
         // }
 
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Deleted successfully');
+        return redirect()->route('category.index')->with('success', 'Deleted successfully');
     }
 }

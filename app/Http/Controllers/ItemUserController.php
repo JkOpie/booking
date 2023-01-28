@@ -61,10 +61,10 @@ class ItemUserController extends Controller
             ->whereIn('status', ['booked', 'confirmed', 'approved'])
             ->get();
 
-            //dd();
+           
 
             if($existingItem->count() == 0){
-
+            
                 ItemUser::create([
                     'user_id' => Auth::user()->id,
                     'item_id' => $id,
@@ -74,17 +74,14 @@ class ItemUserController extends Controller
                     'total_price' => $request->total_price
                 ]);
 
-                if(Auth::user()->hasRole('user')){
-                    $message = 'User '.Auth::user()->name.' has booked '.$item->name;
-                    Mail::to(Auth::user()->email)->send(new SendNotifications($message));
-                    return redirect('/user/booked')->with('success',$item->name.' booked! Please pay to confirm your booking in booking page');
-                }
-
+                $message = 'User '.Auth::user()->name.' has booked '.$item->name;
+                Mail::to(Auth::user()->email)->send(new SendNotifications($message));
+                return redirect('/user/booked')->with('success',$item->name.' booked! Please pay to confirm your booking in booking page');
+                
             }else{
-                if(Auth::user()->hasRole('user')){
-                    return redirect('/user/places/'.$item->type_id.'/'.$item->category_id)->with('error', 'Already booked on this date! Please select other data');
-                }
+                return redirect('/user/places/'.$item->type_id.'/'.$item->category_id)->with('error', 'Already booked on this date! Please select other data');
             }
+           
         }
 
         if($request->status == "confirmed"){
@@ -107,9 +104,8 @@ class ItemUserController extends Controller
                 'status' => $request->status
             ]);
 
-            if(Auth::user()->hasRole('user')){
-                return redirect('/user/booked')->with('success',$item->name.' confirmed!');
-            }
+             return redirect('/user/booked')->with('success',$item->name.' confirmed!');
+            
         }
 
         if($request->status == "approved"){

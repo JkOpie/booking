@@ -52,8 +52,8 @@
                         <td>{{$item->start_date}}</td>
                         <td>{{$item->end_date}}</td>
                         <td>{{$item->status}}</td>
-                        <td>{{$item->item->name}}</td>
-                        <td>{{$item->item->description}}</td>
+                        <td>{{isset($item->item) ? $item->item->name : '-'}}</td>
+                        <td>{{isset($item->item) ? $item->item->description : '-'}}</td>
                         <td>{{ isset($item->item->price) ? $item->item->price : 10}}</td>
                         <td>{{$item->total_price}}</td>
                         <td>{{$item->payment_type}}</td>

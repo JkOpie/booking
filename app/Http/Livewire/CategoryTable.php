@@ -162,13 +162,13 @@ final class CategoryTable extends PowerGridComponent
                ->caption('Edit')
                ->class('btn btn-primary btn-sm')
                ->target('_self')
-               ->route('categories.edit', ['category' => 'id']),
+               ->route('category.edit', ['category' => 'id']),
 
            Button::add('destroy')
                ->caption('Delete')
                ->class('btn btn-danger btn-sm')
                ->target('_self')
-               ->route('categories.destroy', ['category' => 'id'])
+               ->route('category.destroy', ['category' => 'id'])
                ->method('delete')
         ];
     }

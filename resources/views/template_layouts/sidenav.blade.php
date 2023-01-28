@@ -30,7 +30,7 @@
                         {{-- <a class="nav-link" href="{{route('items.index')}}">All</a> --}}
                     </nav>
                 </div>
-                <a class="nav-link" href="{{route('categories.index')}}" data-type="categories">
+                <a class="nav-link" href="{{route('category.index')}}" data-type="categories">
                     <div class="nav-link-icon"><i class="fa-solid fa-c"></i></div>
                     Category
                 </a>

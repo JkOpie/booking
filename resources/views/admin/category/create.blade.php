@@ -12,7 +12,7 @@
                     </h1>
                 </div>
                 <div class="col-12 col-xl-auto mb-3">
-                    <a class="btn btn-sm btn-light text-primary" href="{{route('categories.index')}}">
+                    <a class="btn btn-sm btn-light text-primary" href="{{route('category.index')}}">
                         <i class="me-1" data-feather="user-plus"></i>
                         Back
                     </a>
@@ -27,7 +27,16 @@
 <div class="container-fluid px-4">
     <div class="card">
         <div class="card-body">
-            <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{$error}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endforeach
+            @endif
+
+            <form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Name</label>

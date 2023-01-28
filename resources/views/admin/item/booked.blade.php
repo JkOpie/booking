@@ -53,13 +53,13 @@
                         <td>{{$item->start_date}}</td>
                         <td>{{$item->end_date}}</td>
                         <td>{{$item->status}}</td>
-                        <td>{{$item->item->name}}</td>
-                        <td>{{$item->item->description}}</td>
+                        <td>{{ isset($item->item) ? $item->item->name : '-'}}</td>
+                        <td>{{ isset($item->item) ? $item->item->description : '-'}}</td>
                         {{-- <td>{{$item->total_price}}</td>
                         <td>{{$item->payment_type}}</td>
                         <td>{{$item->receipt}}</td> --}}
-                        <td>{{$item->item->type->name}}</td>
-                        <td>{{$item->item->category->name}}</td>
+                        <td>{{isset($item->item) ? $item->item->type->name : '-'}}</td>
+                        <td>{{isset($item->item) ? $item->item->category->name : '-'}}</td>
                         <td><a class="btn btn-danger btn-sm" href="{{route('items.admin-update', ['item_id' => $item->id, 'status' => 'rejected'])}}">Remove</a></td>
                     </tr>
 

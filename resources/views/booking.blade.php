@@ -40,6 +40,7 @@
             <div class="card mb-3" style="">
                 <div class="row g-0">
                     <div class="col-md-3">
+                    @if (isset($item->item))
                         @if ($item->item->attachments->isNotEmpty())
                             @if ($item->item->attachments->count() > 1)
                                 <div id="carouselExample" class="carousel slide">
@@ -69,13 +70,17 @@
                         @else
                             <img src="/assets/no-image.jpg" class="img-fluid rounded-start" alt="...">
                         @endif
+                    @else
+                        <img src="/assets/no-image.jpg" class="img-fluid rounded-start" alt="...">
+                    @endif
+                  
                     </div>
 
                     <div class="col-md-6">
                         <div class="card-body h-100">
                             <div class="h-100 d-flex flex-column justify-content-center">
-                                <h5 class="card-title">{{$item->item->name}}</h5>
-                                <p class="card-text mb-0">{{$item->item->description}}</p>
+                                <h5 class="card-title">{{ isset($item->item) ? $item->item->name : '-' }}</h5>
+                                <p class="card-text mb-0">{{ isset($item->item) ?  $item->item->description : '-'}}</p>
                                 <div class="d-flex flex-row">
                                     <i>
                                         <small class="fw-light">{{$item->start_date}}</small>
@@ -120,6 +125,7 @@
             <div class="card mb-3" style="">
                 <div class="row g-0">
                     <div class="col-md-3">
+                    @if (isset($item->item))
                         @if ($item->item->attachments->isNotEmpty())
                             @if ($item->item->attachments->count() > 1)
                             <div id="carouselExample" class="carousel slide">
@@ -149,6 +155,9 @@
                         @else
                             <img src="/assets/no-image.jpg" class="img-fluid rounded-start" alt="...">
                         @endif
+                    @else
+                        <img src="/assets/no-image.jpg" class="img-fluid rounded-start" alt="...">
+                    @endif
                     </div>
 
                     <div class="col-md-7">
@@ -192,6 +201,7 @@
             <div class="card mb-3" style="">
                 <div class="row g-0">
                     <div class="col-md-3">
+                    @if (isset($item->item))
                         @if ($item->item->attachments->isNotEmpty())
                             @if ($item->item->attachments->count() > 1)
                                 <div id="carouselExample" class="carousel slide">
@@ -221,6 +231,9 @@
                         @else
                             <img src="/assets/no-image.jpg" class="img-fluid rounded-start" alt="...">
                         @endif
+                    @else
+                        <img src="/assets/no-image.jpg" class="img-fluid rounded-start" alt="...">
+                    @endif
                     </div>
 
                     <div class="col-md-7">
@@ -346,6 +359,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <script>
+    var host = window.location.protocol + "//" + window.location.host;
+    console.log(host);
 
     function closePaymentModel(){
         $('.qr-generator').empty();
@@ -358,7 +373,7 @@
         if(value == 'qr'){
             $('.qr').show();
             $('input[name=payment_type]').val('qr');
-            generate('https://booking.jkopie.com/user/payment/'+itemUserID);
+            generate(host+'/user/payment/'+itemUserID);
             $('.receipt').hide();
         }
 
@@ -384,7 +399,7 @@
     function payment(item_id, total_price, itemuserID){
         $('#UploadReceipt').attr('action', '/itemuser/booking/'+item_id);
         $('input[name=itemUserID]').val(itemuserID)
-        generate('https://booking.jkopie.com/user/payment/'+itemuserID);
+        generate(host+'/user/payment/'+itemuserID);
     }
 
     function edit(items){

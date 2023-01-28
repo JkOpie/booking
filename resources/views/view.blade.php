@@ -98,7 +98,7 @@
     @endforeach
 
     <div class="pt-3">
-        <h1>Recommendations</h1>
+        <h1>Recommend For You</h1>
     </div>
     <hr>
 

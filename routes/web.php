@@ -101,7 +101,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/items/update', [ItemController::class, 'admin_update'])->name('items.admin-update');
 
     Route::resource('types', TypeController::class);
-    Route::resource('categories', CategoryController::class);
+    Route::resource('category', CategoryController::class);
     Route::resource('users', UserController::class);
 
     Route::put('users/update-password/{id}', [UserController::class, 'update_password'])->name('users.update-password');

@@ -108,7 +108,7 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
-        $items = Item::where('name', 'ilike', '%'.$request->title.'%')->get();
+        $items = Item::where('name', 'like', '%'.$request->title.'%')->get();
 
         if($items->count() == 0){
             return redirect()->back()->with('error', 'Cant find any place your search, Please try again!');
@@ -193,7 +193,9 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        Item::findOrFail($id)->delete();
+        $item = Item::findOrFail($id);
+        ItemUser::where('item_id', $item->id)->delete();
+        $item->delete();
         return redirect()->route('items.index')->with('success', 'Deleted successfully');
     }
 

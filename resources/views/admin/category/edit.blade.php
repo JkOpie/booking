@@ -13,7 +13,7 @@
                     </h1>
                 </div>
                 <div class="col-12 col-xl-auto mb-3 ">
-                    <a class="btn btn-sm btn-light text-primary text-center" href="{{route('categories.index')}}">Back</a>
+                    <a class="btn btn-sm btn-light text-primary text-center" href="{{route('category.index')}}">Back</a>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
 <div class="container-fluid px-4">
     <div class="card">
         <div class="card-body">
-           <form action="{{route('categories.update', $category->id)}}" method="post" enctype="multipart/form-data">
+           <form action="{{route('category.update', $category->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
 
