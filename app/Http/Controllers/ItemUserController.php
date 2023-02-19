@@ -31,7 +31,7 @@ class ItemUserController extends Controller
             'total_price' => $request->total_price
         ]);
 
-        return redirect()->back()->with('success', 'Booking Updated!');
+        return redirect()->back()->with('success', 'Booking Updated');
     }
 
     public function booking(Request $request, $id)
@@ -76,7 +76,7 @@ class ItemUserController extends Controller
 
                 $message = 'User '.Auth::user()->name.' has booked '.$item->name;
                 Mail::to(Auth::user()->email)->send(new SendNotifications($message));
-                return redirect('/user/booked')->with('success',$item->name.' booked! Please pay to confirm your booking in booking page');
+                return redirect('/user/booked')->with('success',$item->name.' booked. Please pay to confirm your booking in booking page');
                 
             }else{
                 return redirect('/user/places/'.$item->type_id.'/'.$item->category_id)->with('error', 'Already booked on this date! Please select other data');
@@ -104,7 +104,7 @@ class ItemUserController extends Controller
                 'status' => $request->status
             ]);
 
-             return redirect('/user/booked')->with('success',$item->name.' confirmed!');
+             return redirect('/user/booked')->with('success',$item->name.' confirmed');
             
         }
 
@@ -117,7 +117,7 @@ class ItemUserController extends Controller
             if(Auth::user()->hasRole('admin')){
                 $message = 'Admin '.Auth::user()->name.' has '.$request->status.' '.$item->name;
                 Mail::to($itemUser->user->email)->send(new SendNotifications($message));
-                return redirect('/user/booked')->with('success',$item->name.' confirmed!');
+                return redirect('/user/booked')->with('success',$item->name.' confirmed');
             }
         }
 
@@ -133,7 +133,7 @@ class ItemUserController extends Controller
 
         $item->delete();
 
-        return redirect()->back()->with('success','Booking deleted!');
+        return redirect()->back()->with('success','Booking deleted');
     }
 
     public function payment($itemuser_id)

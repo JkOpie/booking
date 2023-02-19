@@ -18,7 +18,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-lg-auto mb-5 mb-lg-0 text-center text-lg-start">
                     <!-- Invoice branding-->
-                    <img class="invoice-brand-img rounded-circle mb-4" src="/var/www/bookingsystem/public/assets/logo.jpg" alt="" width="100" height="100">
+                    <img class="invoice-brand-img rounded-circle mb-4" src="C:\Users\addra\OneDrive\Desktop\NewBooking\booking\public\assets\logo.jpg" alt="" width="100" height="100">
                     <div class="h2 text-white mb-0"> Kulim Hi-Tech Park Sports Complex </div>
                 </div>
                 <div class="col-12 col-lg-auto text-center text-lg-end">

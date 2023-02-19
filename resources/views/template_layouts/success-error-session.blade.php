@@ -2,7 +2,7 @@
     <script>
         Swal.fire(
             'Success!',
-            "{{Session::get('success')}}.",
+            "{{Session::get('success')}}",
             'success'
         )
     </script>
@@ -10,7 +10,7 @@
 <script>
     Swal.fire(
         'Not Available!',
-        "{{Session::get('error')}}.",
+        "{{Session::get('error')}}",
         'error'
     )
 </script>

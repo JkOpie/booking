@@ -81,16 +81,16 @@ class ItemController extends Controller
         //dd( $request->all());
         $item = ItemUser::where('id', $request->item_id)->firstOrFail();
 
-        if($request['amp;status'] != 'rejected'){
-            $message = 'Admin '.Auth::user()->name.' have '.$request['amp;status'] .' you from '.$item->item->name;
+        if($request['status'] != 'rejected'){
+            $message = 'Admin '.Auth::user()->name.' have '.$request['status'] .' you from '.$item->item->name;
             //Mail::to($item->user->email)->send(new SendNotifications($message));
-            $item->update(['status' => $request['amp;status'] ]);
-            return redirect()->back()->with('success',$item->name.' updated to '.$request['amp;status'].'!');
+            $item->update(['status' => $request['status'] ]);
+            return redirect()->back()->with('success',$item->item->name.' updated to '.$request['status'].'');
         }else{
             $message = 'Admin '.Auth::user()->name.' have removed you from '.$item->item->name;
             //Mail::to($item->user->email)->send(new SendNotifications($message));
             $item->delete();
-            return redirect()->back()->with('success',$item->name.' updated to available!');
+            return redirect()->back()->with('success',$item->item->name.' updated to available');
         }
     }
 
@@ -111,7 +111,7 @@ class ItemController extends Controller
         $items = Item::where('name', 'like', '%'.$request->title.'%')->get();
 
         if($items->count() == 0){
-            return redirect()->back()->with('error', 'Cant find any place your search, Please try again!');
+            return redirect()->back()->with('error', 'Cant find any place your search, Please try again');
         }
         return view('search',compact('items'));
     }
